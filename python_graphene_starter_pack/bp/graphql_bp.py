@@ -11,7 +11,7 @@ graphql_bp = Blueprint('graphql', __name__)
 @graphql_bp.route('/', methods=['POST'])
 def handle_graphql_request():
     try:
-        data = request_schema.load(request.get_json() or {})
+        data, _ = request_schema.load(request.get_json() or {})
         query = data['query']
         variables = data['variables']
 
